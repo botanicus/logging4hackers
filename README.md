@@ -1,4 +1,4 @@
-h1. About
+# About
 
 In the Ruby community it's very popular to just append to a file in @log/@ directory in the current app. Usually the developer can't even change the file. Damn it guys, we can do better!
 
@@ -6,19 +6,19 @@ In the Ruby community it's very popular to just append to a file in @log/@ direc
 * You might not want to use files for logging at all. Especially considering that for *security reasons* it's better to send logs to a different server.
 * You might want to *aggregate logs* from multiple servers.
 
-h2. Readable Logs
+## Readable Logs
 
 Besides, logs should be easy to read for the developers. No unnecessary crap, red for errors, yellow for warnings, cyan for info. Show time and identifier (for instance @testapp.logs.db@) and the message. Easy peasy!
 
 <img src="https://raw.github.com/botanicus/logging4hackers/master/logger.png" />
 
-h1. Use-Cases
+# Use-Cases
 
-h2. Logging Straight Into RabbitMQ
+## Logging Straight Into RabbitMQ
 
 _*TODO*: Simplify this, I just used my test script as an example._
 
-<pre>
+```ruby
   require 'eventmachine'
 
   EM.run do
@@ -52,22 +52,21 @@ _*TODO*: Simplify this, I just used my test script as an example._
       end
     end
   end
-</pre>
+```
 
-h2. Client/Server
+## Client/Server
 
 * You might not want to run EventMachine.
 * Setting up the Pipe logger on the client side requires much less setup, hence much less stuff can wrong.
 * The @loggingd.rb@ script is a middleware, it can be changed to do some extra stuff at any time, send logs elsewhere etc which makes sense especially if you're using it for more applications.
 
-<pre>
+```
   ./bin/logs_listen.rb /tmp/loggingd.pipe
-</pre>
+```
 
-<pre>
+```ruby
   logger = Logging::Logger.new do |logger|
     logger.io = Logging::IO::Pipe.new('testapp.logs.db', '/tmp/loggingd.pipe')
     logger.io.formatter = Logging::Formatters::Colourful.new
   end
-</pre>
-
+```
