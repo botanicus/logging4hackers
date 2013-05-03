@@ -1,6 +1,6 @@
 # About
 
-In the Ruby community it's very popular to just append to a file in @log/@ directory in the current app. Usually the developer can't even change the file. Damn it guys, we can do better!
+In the Ruby community it's very popular to just append to a file in `log/` directory in the current app. Usually the developer can't even change the file. Damn it guys, we can do better!
 
 * You might want to have the log files in `/var/log` for simpler *logrotate configuration*.
 * You might not want to use files for logging at all. Especially considering that for *security reasons* it's better to send logs to a different server.
@@ -8,7 +8,7 @@ In the Ruby community it's very popular to just append to a file in @log/@ direc
 
 ## Readable Logs
 
-Besides, logs should be easy to read for the developers. No unnecessary crap, red for errors, yellow for warnings, cyan for info. Show time and identifier (for instance @testapp.logs.db@) and the message. Easy peasy!
+Besides, logs should be easy to read for the developers. No unnecessary crap, red for errors, yellow for warnings, cyan for info. Show time and identifier (for instance `testapp.logs.db`) and the message. Easy peasy!
 
 <img src="https://raw.github.com/botanicus/logging4hackers/master/logger.png" />
 
@@ -58,7 +58,7 @@ _*TODO*: Simplify this, I just used my test script as an example._
 
 * You might not want to run EventMachine.
 * Setting up the Pipe logger on the client side requires much less setup, hence much less stuff can wrong.
-* The @loggingd.rb@ script is a middleware, it can be changed to do some extra stuff at any time, send logs elsewhere etc which makes sense especially if you're using it for more applications.
+* The `loggingd.rb` script is a middleware, it can be changed to do some extra stuff at any time, send logs elsewhere etc which makes sense especially if you're using it for more applications.
 
 ```
   ./bin/logs_listen.rb /tmp/loggingd.pipe
