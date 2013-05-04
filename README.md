@@ -19,39 +19,39 @@ Besides, logs should be easy to read for the developers. No unnecessary crap, re
 ***TODO**: Simplify this, I just used my test script as an example.*
 
 ```ruby
-  require 'eventmachine'
+require 'eventmachine'
 
-  EM.run do
-    require 'amq/client'
+EM.run do
+  require 'amq/client'
 
-    AMQ::Client.connect(adapter:  'eventmachine') do |connection|
-      channel = AMQ::Client::Channel.new(connection, 1)
+  AMQ::Client.connect(adapter:  'eventmachine') do |connection|
+    channel = AMQ::Client::Channel.new(connection, 1)
 
-      channel.open
+    channel.open
 
-      exchange = AMQ::Client::Exchange.new(connection, channel, 'amq.topic', :topic)
+    exchange = AMQ::Client::Exchange.new(connection, channel, 'amq.topic', :topic)
 
-      logger = Logging::Logger.new do |logger|
-        logger.io = Logging::IO::AMQP.new('testapp.logs.db', exchange)
-        logger.formatter = Logging::Formatters::Colourful.new
+    logger = Logging::Logger.new do |logger|
+      logger.io = Logging::IO::AMQP.new('testapp.logs.db', exchange)
+      logger.formatter = Logging::Formatters::Colourful.new
+    end
+
+    EM.add_periodic_timer(1) do
+      level = Logging::Logger::LEVELS[rand(Logging::Logger::LEVELS.length)]
+      logger.send(level, 'GET /ideas.json -- 20s')
+      logger.inspect({method: 'GET', path: '/ideas.json', response: '200'}.to_json)
+      logger.measure_time("Request took %s") do
+        sleep 0.23
       end
+      logger.inspect({method: 'GET', path: '/ideas.json', response: '200'})
+    end
 
-      EM.add_periodic_timer(1) do
-        level = Logging::Logger::LEVELS[rand(Logging::Logger::LEVELS.length)]
-        logger.send(level, 'GET /ideas.json -- 20s')
-        logger.inspect({method: 'GET', path: '/ideas.json', response: '200'}.to_json)
-        logger.measure_time("Request took %s") do
-          sleep 0.23
-        end
-        logger.inspect({method: 'GET', path: '/ideas.json', response: '200'})
-      end
-
-      EM.add_periodic_timer(2.3) do
-        level = Logging::Logger::LEVELS[rand(Logging::Logger::LEVELS.length)]
-        logger.send(level, 'line 1', 'line 2', 'line 3')
-      end
+    EM.add_periodic_timer(2.3) do
+      level = Logging::Logger::LEVELS[rand(Logging::Logger::LEVELS.length)]
+      logger.send(level, 'line 1', 'line 2', 'line 3')
     end
   end
+end
 ```
 
 ## Client/Server
@@ -65,8 +65,8 @@ Besides, logs should be easy to read for the developers. No unnecessary crap, re
 ```
 
 ```ruby
-  logger = Logging::Logger.new do |logger|
-    logger.io = Logging::IO::Pipe.new('testapp.logs.db', '/tmp/loggingd.pipe')
-    logger.io.formatter = Logging::Formatters::Colourful.new
-  end
+logger = Logging::Logger.new do |logger|
+  logger.io = Logging::IO::Pipe.new('testapp.logs.db', '/tmp/loggingd.pipe')
+  logger.io.formatter = Logging::Formatters::Colourful.new
+end
 ```
