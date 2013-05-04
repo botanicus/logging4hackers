@@ -2,9 +2,9 @@
 
 In the Ruby community it's very popular to just append to a file in `log/` directory in the current app. Usually the developer can't even change the file. Damn it guys, we can do better!
 
-* You might want to have the log files in `/var/log` for simpler *logrotate configuration*.
-* You might not want to use files for logging at all. Especially considering that for *security reasons* it's better to send logs to a different server.
-* You might want to *aggregate logs* from multiple servers.
+* You might want to have the log files in `/var/log` for simpler **logrotate configuration**.
+* You might not want to use files for logging at all. Especially considering that for **security reasons** it's better to send logs to a different server.
+* You might want to **aggregate logs** from multiple servers.
 
 ## Readable Logs
 
@@ -16,7 +16,7 @@ Besides, logs should be easy to read for the developers. No unnecessary crap, re
 
 ## Logging Straight Into RabbitMQ
 
-_*TODO*: Simplify this, I just used my test script as an example._
+***TODO**: Simplify this, I just used my test script as an example.*
 
 ```ruby
   require 'eventmachine'
