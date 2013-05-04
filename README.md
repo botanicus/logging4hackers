@@ -80,13 +80,15 @@ Often you want to figure out what's going on on your stagging server. This is ho
 ./bin/logs_listen.rb 'logs.myapp.#' amqp://user:pass@remote_server/vhost
 ```
 
-It creates temporary queue which it binds to the amq.topic exchange which exists by default in any RabbitMQ installation. Then it binds the temporary queue to this exchange with pattern we provide (in this case it's logs.myapp.#). This makes sure all the subscribers gets all the messages they're interested in.
+It creates temporary queue which it binds to the `amq.topic` exchange which exists by default in any RabbitMQ installation. Then it binds the temporary queue to this exchange with pattern we provide (in this case it's `logs.myapp.#`). This makes sure all the subscribers gets all the messages they're interested in.
 
 # Logging Best Practices
 
 ## Don't Use Just One Logger Per App
 
 Database, web server, application code, metrics, all in one place?
+
+Why? Filtering based on specific pattern.
 
 ```ruby
 class DB
