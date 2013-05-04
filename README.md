@@ -16,9 +16,11 @@ Besides, logs should be easy to read for the developers. No unnecessary crap, re
 
 ## Logging Straight Into RabbitMQ
 
-***TODO**: Simplify this, I just used my test script as an example.*
+*TODO: Disconnect the AMQP, stop EM & terminate.*
 
 ```ruby
+require 'logging'
+require 'logging/code'
 require 'eventmachine'
 
 EM.run do
@@ -36,20 +38,9 @@ EM.run do
       logger.formatter = Logging::Formatters::Colourful.new
     end
 
-    EM.add_periodic_timer(1) do
-      level = Logging::Logger::LEVELS[rand(Logging::Logger::LEVELS.length)]
-      logger.send(level, 'GET /ideas.json -- 20s')
-      logger.inspect({method: 'GET', path: '/ideas.json', response: '200'}.to_json)
-      logger.measure_time("Request took %s") do
-        sleep 0.23
-      end
-      logger.inspect({method: 'GET', path: '/ideas.json', response: '200'})
-    end
-
-    EM.add_periodic_timer(2.3) do
-      level = Logging::Logger::LEVELS[rand(Logging::Logger::LEVELS.length)]
-      logger.send(level, 'line 1', 'line 2', 'line 3')
-    end
+    logger.info('Starting the app.')
+    logger.inspect({method: 'GET', path: '/ideas.json', response: '200'})
+    logger.error('Whops, no app defined, terminating.')
   end
 end
 ```
@@ -60,8 +51,15 @@ end
 * Setting up the Pipe logger on the client side requires much less setup, hence much less stuff can wrong.
 * The `loggingd.rb` script is a middleware, it can be changed to do some extra stuff at any time, send logs elsewhere etc which makes sense especially if you're using it for more applications.
 
-```
-  ./bin/logs_listen.rb /tmp/loggingd.pipe
+```shell
+# Create a named pipe.
+mkfifo /tmp/loggingd.pipe
+
+# Listen for messages coming to /tmp/loggingd.pipe.
+# You probably want to write a script of your own
+# which resends these messages onto RabbitMQ running
+# on a different server.
+./bin/logs_listen.rb /tmp/loggingd.pipe
 ```
 
 ```ruby
@@ -70,3 +68,5 @@ logger = Logging::Logger.new do |logger|
   logger.io.formatter = Logging::Formatters::Colourful.new
 end
 ```
+
+# CLI
