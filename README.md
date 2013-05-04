@@ -66,7 +66,7 @@ mkfifo /tmp/loggingd.pipe
 ```ruby
 logger = Logging::Logger.new do |logger|
   logger.io = Logging::IO::Pipe.new('testapp.logs.db', '/tmp/loggingd.pipe')
-  logger.io.formatter = Logging::Formatters::Colourful.new
+  logger.formatter = Logging::Formatters::Colourful.new
 end
 ```
 
@@ -74,6 +74,37 @@ end
 
 _Parsing of AMQP URL isn't implemented yet, but this is how it is going to work._
 
+Often you want to figure out what's going on on your stagging server. This is how you do it:
+
 ```bash
-./bin/logs_listen.rb 'myapp.logs.#' amqp://user:pass@remote_server/vhost
+./bin/logs_listen.rb 'logs.myapp.#' amqp://user:pass@remote_server/vhost
+```
+
+It creates temporary queue which it binds to the amq.topic exchange which exists by default in any RabbitMQ installation. Then it binds the temporary queue to this exchange with pattern we provide (in this case it's logs.myapp.#). This makes sure all the subscribers gets all the messages they're interested in.
+
+# Logging Best Practices
+
+## Don't Use Just One Logger Per App
+
+Database, web server, application code, metrics, all in one place?
+
+```ruby
+class DB
+  def self.logger
+    @logger ||= Logging::Logger.new do |logger|
+      logger.io = Logging::IO::Pipe.new('testapp.logs.db', '/tmp/loggingd.pipe')
+      logger.formatter = Logging::Formatters::Colourful.new
+    end
+  end
+end
+
+class App
+  def self.logger
+  @logger ||= Logging::Logger.new do |logger|
+    logger.io = Logging::IO::Pipe.new('testapp.app.db', '/tmp/loggingd.pipe')
+    logger.formatter = Logging::Formatters::Colourful.new
+  end
+end
+
+# Etc.
 ```
