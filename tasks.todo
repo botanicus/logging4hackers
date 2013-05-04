@@ -1,0 +1,16 @@
+Library:
+- Move syntax highlighting into the colourful formatter.
+- Specs.
+- AMQP connection in bootstrap.
+- http://en.wikipedia.org/wiki/Unix_domain_socket
+
+CLI:
+- Implement AMQP URI.
+- Save log files.
+
+Launch:
+- Gemspec.
+- Push to GitHub.
+- Push the gem to RubyGems.org
+- Make some screenshots.
+- Announce on my blog.
