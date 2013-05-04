@@ -14,7 +14,7 @@ Gem::Specification.new do |s|
   s.files = Array.new.tap do |files|
     files << Dir.glob('bin/*')
     files << Dir.glob('lib/*')
-    files << ['README.textile', __FILE__]
+    files << ['README.md', __FILE__]
   end.flatten
 
   s.executables = Dir['bin/*'].map(&File.method(:basename))
