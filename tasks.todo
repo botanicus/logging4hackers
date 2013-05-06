@@ -15,6 +15,7 @@ Launch:
 Next Release:
 - YARD & Markdown (I'm using `code` and it doesn't work).
 - Is @api plugin in formatters what we really want?
+- Finish specs & docs for io.
 - Gemspec: changelog.
 - Integration tests. Is it really writing into pipe? Into RabbitMQ? Test it!
 

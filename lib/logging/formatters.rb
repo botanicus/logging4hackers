@@ -1,6 +1,9 @@
 # encoding: utf-8
 
 module Logging
+  # Formatters are used for formatting the log message.
+  # They can access level, label and the message.
+  # Their output is always string.
   module Formatters
 
     # Default formatter. No colours, just log level, time stamp,
@@ -77,8 +80,8 @@ module Logging
       # The `single` key is used by {#format_single_message},
       # whereas `header` is used by {#format_multiple_messages}.
       FORMAT_STRINGS = {
-        single: "~ %s",
-        header: "~ %s"
+        single: '~ %s',
+        header: '~ %s'
       }
 
       # Format single log message.

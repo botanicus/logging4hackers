@@ -3,14 +3,27 @@
 require_relative 'formatters'
 
 module Logging
+  # IO objects define how to write the log message.
+  # It can be on console, to a socket, to RabbitMQ,
+  # named pipe ... you name it!
   module IO
+
+    # @abstract
+    #   Subclass and override {#write}.
     class Base
       attr_reader :label
+
+      # @param label [String] Label. For instance `logs.app.db`.
       def initialize(label)
         @label = label
       end
+
+      def write(message)
+        raise NotImplementedError.new
+      end
     end
 
+    # Write on console.
     class Raw < Base
       def write(message)
         puts message
@@ -25,11 +38,13 @@ module Logging
       end
     end
 
+    # Discard everything.
     class Null < Raw
       def write(*)
       end
     end
 
+    # Write to a file.
     class File < Raw
       attr_reader :path
       def initialize(label, path)
@@ -45,7 +60,7 @@ module Logging
       end
     end
 
-    # In case that RabbitMQ isn't running yet.
+    # Write to a buffer.
     class Buffer < Raw
       def buffer
         @buffer ||= Array.new
@@ -62,6 +77,7 @@ module Logging
       end
     end
 
+    # Write to a named pipe.
     class Pipe < Raw
       attr_reader :path
       def initialize(label, path)
@@ -79,6 +95,7 @@ module Logging
       end
     end
 
+    # Send message to an AMQP broker.
     class AMQP < Base
       def self.bootstrap(config)
         require 'amq/client'
