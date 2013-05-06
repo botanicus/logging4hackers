@@ -8,11 +8,11 @@ require 'amq/client'
 #   ./bin/logs_listen.rb [routing key] [AMQP URI] [log dir]
 #
 # Routing Key Examples:
-#   'myapp.logs.*.error
-#   'myapp.logs.db.*
-#   'myapp.logs.#
+#   myapp.logs.*.error
+#   myapp.logs.db.*
+#   myapp.logs.#
 #
-# AMQP URI (TBD):
+# AMQP URI:
 #   For instance amqp://user:pass@host/vhost
 #   See http://www.rabbitmq.com/uri-spec.html
 #
@@ -22,11 +22,18 @@ require 'amq/client'
 #   I'll get message with routing key myapp.logs.db.error, it will be
 #   written into /var/log/myapp.db.log.
 
+# ARGV parsing.
 routing_key   = ARGV.first || '#.logs.#'
 log_directory = ARGV[2]
+amqp_opts = if ARGV[1]
+  puts "~ AMQP: #{AMQ::Client::Settings.parse_amqp_url(ARGV[1])}"
+  AMQ::Client::Settings.parse_amqp_url(ARGV[1]).merge(adapter: 'eventmachine')
+else
+  {adapter: 'eventmachine'}
+end
 
 EM.run do
-  AMQ::Client.connect(adapter:  'eventmachine') do |connection|
+  AMQ::Client.connect(amqp_opts) do |connection|
 
     channel = AMQ::Client::Channel.new(connection, 1)
     channel.open

@@ -1,18 +1,13 @@
-TODO:
-- AMQP connection in bootstrap.
-- 100% test coverage.
-- 100% YARD public API coverage.
-
-CLI:
-- Implement AMQP URI.
-- Save log files.
-
 Launch:
+- README.
+
 - Git tag first version (http://semver.org).
 - Push the gem to RubyGems.org
 - Announce on my blog.
 
 Next Release:
+- AMQP connection in bootstrap.
+- CLI: Save log files if log directory provided.
 - YARD & Markdown (I'm using `code` and it doesn't work) http://rubydoc.info/docs/yard/file/docs/GettingStarted.md#Configuring_YARD
 - Is @api plugin in formatters what we really want?
 - Finish specs & docs for io.
