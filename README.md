@@ -2,12 +2,10 @@
 
 In the Ruby community it's very popular to **just append** to a file in `log/` directory in the current app. In many frameworks the developer **can't even change** the file. Damn it guys, **we can do better**!
 
-* [YARD API Documentation](http://rubydoc.info/github/botanicus/logging4hackers/master)
-
 ## About [@botanicus](https://twitter.com/botanicus) ([blog](http://blog.101ideas.cz))
 
 ![botanicus](http://www.gravatar.com/avatar/74c419a50563fa9e5044820c2697ffd6)
-I'm a **launch-addict**, creating stuff that matters is my biggest passion. I **dropped out of high school** and learnt programming before I'd end up on a street. In just a few months I moved from <a title="Small town in mountains of Czech Republic">middle of nowhere</a> to **London** where I worked as a freelancer for do companies like **VMware** on the **RabbitMQ team** for which I, <a title="Michael wasn't employed by VMware, he was hacking on AMQP in his free time. Kudos!">alongside</a> great hacker [michaelklishin](https://github.com/michaelklishin), rewrote the [AMQP gem](https://github.com/ruby-amqp/amqp).
+I'm a **launch-addict**, creating stuff that matters is my biggest passion. I **dropped out of high school** and learnt programming before I'd end up on a street. In just a few months I moved from <a title="Small town in mountains of Czech Republic">middle of nowhere</a> to **London** where I worked as a freelancer for companies like **VMware** on the **RabbitMQ team** for which I, <a title="Michael wasn't employed by VMware, he was hacking on AMQP in his free time. Kudos!">alongside</a> great hacker [michaelklishin](https://github.com/michaelklishin), rewrote the [AMQP gem](https://github.com/ruby-amqp/amqp).
 
 I **contributed** to many famous OSS projects including **RubyGems**, **rSpec** and back in the g'd old days also to **Merb**. When EY decided to <a title="The so-called merge ... bunch of crap!">abandon Merb</a> I wrote my own web framework, [Rango](http://www.rubyinside.com/rango-ruby-web-app-framework-2858.html) (now <a title="These days my apps are API servers with heavy JS frontend.">discontinued</a>), the only framework in Ruby with [template inheritance](https://github.com/botanicus/template-inheritance).
 
@@ -97,7 +95,7 @@ It creates temporary queue which it binds to the `amq.topic` exchange which exis
 
 # Logging Best Practices
 
-## Don't Use Just One Logger Per App
+### Don't Use Just One Logger Per App
 
 Database, web server, application code, metrics, all in one place?
 
@@ -120,10 +118,8 @@ class App
     logger.formatter = Logging::Formatters::Colourful.new
   end
 end
-
-# Etc.
 ```
 
-# Contributing
+# Links
 
-Feature branches, follow code conventions, docs & specs.
+* [YARD API Documentation](http://rubydoc.info/github/botanicus/logging4hackers/master)
