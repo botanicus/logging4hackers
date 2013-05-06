@@ -50,6 +50,9 @@ My only goal for this year is to **launch a successful start-up**. Could [Matche
 
 *TODO: Disconnect the AMQP, stop EM & terminate.*
 
+* You can connect to RabbitMQ on **localhost** or **remote server**.
+* So far it requires **some setup**. In the future I might **provide helpers** for this.
+
 ```ruby
 require 'logging'
 require 'logging/code'
@@ -81,7 +84,7 @@ end
 
 * You **might not** want to **run EventMachine**.
 * Setting up the Pipe logger on the client side requires **much less setup**, hence **much less stuff can wrong**.
-* It's easy to write a script to **publish those messages** from the pipe **into RabbitMQ**. In the future I might provide one.
+* It's easy to write a daemon to **publish those messages** from the pipe **into RabbitMQ**. In the future I might provide one.
 
 ```bash
 # Create a named pipe.
