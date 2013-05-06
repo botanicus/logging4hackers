@@ -2,6 +2,8 @@
 
 In the Ruby community it's very popular to **just append** to a file in `log/` directory in the current app. In many frameworks the developer **can't even change** the file. Damn it guys, **we can do better**!
 
+<img src="https://raw.github.com/botanicus/logging4hackers/master/logger.png" />
+
 ## About [@botanicus](https://twitter.com/botanicus) ([blog](http://blog.101ideas.cz))
 
 ![botanicus](http://www.gravatar.com/avatar/74c419a50563fa9e5044820c2697ffd6)
