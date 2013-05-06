@@ -8,7 +8,7 @@ In the Ruby community it's very popular to **just append** to a file in `log/` d
 * You might not want to use files for logging at all. Not on the app server anyway. Especially considering that for **security reasons** it's better to send logs to a different server.
 * You might want to **aggregate logs** from multiple servers.
 * You might want to **filter logs** based on given pattern. Give me all error messages from all applications `logs.#.error`, all log items for database layer of testapp `logs.testapp.db.*`, all error messages for testapp `logs.testapp.*.error` etc.
-* Isn't ssh & tail -f really, really, I mean **really** lame? With AMQP, just subscribe to any pattern on any server you want from comfort of your own dev machine. Rock'n'roll!
+* Isn't ssh & tail -f really, really, I mean **really** lame? With AMQP, just [subscribe to any pattern](#inspecting-remote-server) on any server you want from comfort of your own dev machine. Rock'n'roll!
 
 ## Readable Logs (If You Want)
 
@@ -79,16 +79,16 @@ end
 
 ### Client/Server on Localhost using Named Pipe
 
-* You might not want to run EventMachine.
-* Setting up the Pipe logger on the client side requires much less setup, hence much less stuff can wrong.
-* The `loggingd.rb` script is a middleware, it can be changed to do some extra stuff at any time, send logs elsewhere etc which makes sense especially if you're using it for more applications.
+* You **might not** want to **run EventMachine**.
+* Setting up the Pipe logger on the client side requires **much less setup**, hence **much less stuff can wrong**.
+* It's easy to write a script to **publish those messages** from the pipe **into RabbitMQ**. In the future I might provide one.
 
 ```bash
 # Create a named pipe.
 mkfifo /tmp/loggingd.pipe
 
 # Listen for messages coming to /tmp/loggingd.pipe.
-./bin/logs_listen.rb /tmp/loggingd.pipe
+tail -f /tmp/loggingd.pipe
 ```
 
 ```ruby
@@ -100,7 +100,7 @@ end
 
 # Inspecting Remote Server
 
-Often you want to figure out what's going on on your stagging server. This is how you do it:
+Often you want to figure out **what's going on on server**. This is how you do it:
 
 ```bash
 ./bin/logs_listen.rb 'logs.myapp.#' amqp://user:pass@remote_server/vhost
@@ -112,7 +112,7 @@ It creates temporary queue which it binds to the `amq.topic` exchange which exis
 
 ### Don't Use Just One Logger Per App
 
-In Ruby community people often don't uses loggers at all. If they do, they work with only one instance. One logger instance for database, web server, application code and metrics. That doesn't scale.
+In Ruby community people **often don't use loggers** at all. If they do, they work with **only one instance**. One logger instance for database, web server, application code and metrics. That **doesn't scale**.
 
 If you use one logger instance per each module you can very easily **filter** based on **specific pattern**.
 
