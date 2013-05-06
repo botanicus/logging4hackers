@@ -45,7 +45,7 @@ module Logging
       end
     end
 
-    # In case the AMQP isn't running yet.
+    # In case that RabbitMQ isn't running yet.
     class Buffer < Raw
       def buffer
         @buffer ||= Array.new
@@ -77,13 +77,6 @@ module Logging
         self.pipe.puts(message)
         self.pipe.flush
       end
-    end
-
-    # Keep in mind that sockets does not necessarily mean IP (and TCP or UDP). You can also use UNIX sockets (PF_UNIX), which offer a noticeable performance improvement over connecting to 127.0.0.1
-    class Socket
-    end
-
-    class ZeroMQ
     end
 
     class AMQP < Base
