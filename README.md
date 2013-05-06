@@ -14,6 +14,8 @@ In the Ruby community it's very popular to **just append** to a file in `log/` d
 
 Besides, logs should be easy to read for the developers. That's why logging4hackers provides [colourful formatter](http://rubydoc.info/github/botanicus/logging4hackers/master/Logging/Formatters/Colourful) which uses colours instead of displaying log level as text and [Logger#inspect](http://rubydoc.info/github/botanicus/logging4hackers/master/Logging/Logger#inspect-instance_method) for showing objects as syntax-highlighted JSON.
 
+<img src="https://raw.github.com/botanicus/logging4hackers/master/logger.png" />
+
 ```ruby
 require 'logging'
 require 'logging/code'
@@ -29,7 +31,7 @@ logger.warn("Now I'm a tad bored ...")
 logger.error("OK, gotta sleep now.")
 ```
 
-<img src="https://raw.github.com/botanicus/logging4hackers/master/logger.png" />
+Note: Actually the screenshot shows how would you inspect messages published into RabbitMQ, whereas in the code I'm using the `IO::Raw` which only prints to console. [Example with AMQP](#logging-into-rabbitmq-local-or-remote) is longer.
 
 ## About [@botanicus](https://twitter.com/botanicus) ([blog](http://blog.101ideas.cz))
 
