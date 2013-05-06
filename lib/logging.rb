@@ -1,18 +1,33 @@
 # encoding: utf-8
 
-# stream.logs.app.error
-# stream.logs.db.*
-# stream.logs.#
-# stream.logs.*.error
-
 require_relative 'logging/io'
 require_relative 'logging/formatters'
 
 module Logging
+  # Main class. Instantiate it to start logging.
+  # In reality all this class does is to provide
+  # convenience proxy to {file:lib/logging/io.rb io objects}
+  # and {file:lib/logging/formatters.rb formatters}.
   class Logger
+    # Log levels. At the moment adding new log levels
+    # isn't supported. This might or might not change.
     LEVELS ||= [:error, :warn, :info]
 
+    # Label is required only when you use the default
+    # {file:lib/logging/io.rb io object}.
     attr_reader :label
+
+    # @example
+    #   # Create logger with default values, specifying
+    #   # only the label (mandatory when not specifying io).
+    #   logger = Logging::Logger.new('logs.my_app.db')
+    #
+    # @example
+    #   # Create a logger specifying a custom formatter and io.
+    #   logger = Logging::Logger.new('logs.my_app.db') do |logger|
+    #     logger.io = Logging::IO::Pipe.new(logger.label, '/var/mypipe')
+    #     logger.formatter = Logging::Formatters::Colourful.new
+    #   end
     def initialize(label = nil, &block)
       @label = label
       block.call(self) if block
