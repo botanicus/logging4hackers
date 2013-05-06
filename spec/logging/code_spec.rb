@@ -55,7 +55,7 @@ describe Logging::Logger do
     # TODO: This is obviously wrong, but for the time being ...
     it "should measure how long it takes to execute its block" do
       subject.measure_time("Request took %s") do
-        sleep 0.05
+        sleep 0.055
       end
 
       subject.io.messages.last.should start_with("~ Request took 0.05")
