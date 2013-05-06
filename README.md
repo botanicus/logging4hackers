@@ -10,9 +10,24 @@ In the Ruby community it's very popular to **just append** to a file in `log/` d
 * You might want to **filter logs** based on given pattern. Give me all error messages from all applications `logs.#.error`, all log items for database layer of testapp `logs.testapp.db.*`, all error messages for testapp `logs.testapp.*.error` etc.
 * Isn't ssh & tail -f really, really, I mean **really** lame? With AMQP, just subscribe to any pattern on any server you want from comfort of your own dev machine. Rock'n'roll!
 
-## Readable Logs
+## Readable Logs (If You Want)
 
 Besides, logs should be easy to read for the developers. That's why logging4hackers provides [colourful formatter](http://rubydoc.info/github/botanicus/logging4hackers/master/Logging/Formatters/Colourful) which uses colours instead of displaying log level as text and [Logger#inspect](http://rubydoc.info/github/botanicus/logging4hackers/master/Logging/Logger#inspect-instance_method) for showing objects as syntax-highlighted JSON.
+
+```ruby
+require 'logging'
+require 'logging/code'
+
+logger = Logging::Logger.new do |logger|
+  logger.io = Logging::IO::Raw.new('testapp.logs.db')
+  logger.formatter = Logging::Formatters::Colourful.new
+end
+
+logger.info("Starting the app.")
+logger.inspect({method: 'GET', path: '/ideas.json', response: '200'})
+logger.warn("Now I'm a tad bored ...")
+logger.error("OK, gotta sleep now.")
+```
 
 <img src="https://raw.github.com/botanicus/logging4hackers/master/logger.png" />
 
