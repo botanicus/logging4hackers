@@ -12,7 +12,7 @@ In the Ruby community it's very popular to **just append** to a file in `log/` d
 
 ## Readable Logs
 
-Besides, logs should be easy to read for the developers. No unnecessary crap, red for errors, yellow for warnings, cyan for info. Show time and identifier (for instance `testapp.logs.db`) and the message. Easy peasy!
+Besides, logs should be easy to read for the developers. That's why logging4hackers provides [colourful formatter](http://rubydoc.info/github/botanicus/logging4hackers/master/Logging/Formatters/Colourful) which uses colours instead of displaying log level as text and [Logger#inspect](http://rubydoc.info/github/botanicus/logging4hackers/master/Logging/Logger#inspect-instance_method) for showing objects as syntax-highlighted JSON.
 
 <img src="https://raw.github.com/botanicus/logging4hackers/master/logger.png" />
 
