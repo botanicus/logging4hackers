@@ -12,6 +12,7 @@ Next Release:
 - Is @api plugin in formatters what we really want?
 - Finish specs & docs for io.
 - Gemspec: changelog.
+- Script for listening on pipe and populating RabbitMQ.
 - Integration tests. Is it really writing into pipe? Into RabbitMQ? Test it!
 
 Features for Future Versions:
