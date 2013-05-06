@@ -1,16 +1,22 @@
-Library:
-- Move syntax highlighting into the colourful formatter.
-- Specs.
+TODO:
 - AMQP connection in bootstrap.
-- http://en.wikipedia.org/wiki/Unix_domain_socket
+- 100% test coverage.
+- 100% YARD public API coverage.
+- Push documentation somewhere.
 
 CLI:
 - Implement AMQP URI.
 - Save log files.
 
 Launch:
-- Gemspec.
-- Push to GitHub.
+- Git tag first version (http://semver.org).
 - Push the gem to RubyGems.org
-- Make some screenshots.
 - Announce on my blog.
+
+Next Release:
+- CHANGELOG.
+- Gemspec: changelog.
+
+Features for Future Versions:
+- Unix domain socket support.
+- ZeroMQ support.
