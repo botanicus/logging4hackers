@@ -96,9 +96,9 @@ module Logging
 
     # Delegate to `self.io#write.
     #
-    # @param message [#to_s] Message to be written on the IO object.
-    def write(message)
-      self.io.write(message)
+    # @param args [Array] Arguments for `write` method of current `io` object.
+    def write(*args)
+      self.io.write(*args)
     end
   end
 end
