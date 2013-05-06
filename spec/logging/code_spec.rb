@@ -52,7 +52,13 @@ describe Logging::Logger do
   end
 
   describe '#measure_time' do
-    it "should measure how long it takes to execute its block"
-    it "should report using label provided as the first argument"
+    # TODO: This is obviously wrong, but for the time being ...
+    it "should measure how long it takes to execute its block" do
+      subject.measure_time("Request took %s") do
+        sleep 0.05
+      end
+
+      subject.io.messages.last.should start_with("~ Request took 0.05")
+    end
   end
 end

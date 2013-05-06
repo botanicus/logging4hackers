@@ -2,7 +2,6 @@ TODO:
 - AMQP connection in bootstrap.
 - 100% test coverage.
 - 100% YARD public API coverage.
-- Push documentation somewhere.
 
 CLI:
 - Implement AMQP URI.
