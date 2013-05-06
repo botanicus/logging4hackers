@@ -112,9 +112,9 @@ It creates temporary queue which it binds to the `amq.topic` exchange which exis
 
 ### Don't Use Just One Logger Per App
 
-Database, web server, application code, metrics, all in one place?
+In Ruby community people often don't uses loggers at all. If they do, they work with only one instance. One logger instance for database, web server, application code and metrics. That doesn't scale.
 
-Why? Filtering based on specific pattern.
+If you use one logger instance per each module you can very easily **filter** based on **specific pattern**.
 
 ```ruby
 class DB
