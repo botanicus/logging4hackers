@@ -123,3 +123,4 @@ end
 # Links
 
 * [YARD API Documentation](http://rubydoc.info/github/botanicus/logging4hackers/master)
+* [Semantic Versioning](http://semver.org)

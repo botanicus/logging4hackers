@@ -3,7 +3,7 @@
 
 Gem::Specification.new do |s|
   s.name = 'logging4hackers'
-  s.version = '0.0.1'
+  s.version = '0.1'
   s.authors = ['James C Russell aka botanicus']
   s.homepage = 'http://github.com/botanicus/logging4hackers'
   s.summary = 'Logging using AMQP, pipes, sockets, ZeroMQ ... you name it!'
