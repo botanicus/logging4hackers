@@ -11,10 +11,9 @@ Gem::Specification.new do |s|
   s.email = 'james@101ideas.cz'
 
   # Files.
-  ignore_patterns = ['Gemfile.lock', /\.gem$/]
+  ignore_patterns = ['Gemfile.lock', /\.gem$/, /^doc\//]
 
-  s.files = begin
-    (Dir.glob('**/*') - Dir.glob('doc/**/*')).
+  s.files = begin Dir.glob('**/*').
     select { |path| File.file?(path) }.
     delete_if do |file|
       ignore_patterns.any? do |pattern|
