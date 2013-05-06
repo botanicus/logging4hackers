@@ -5,10 +5,10 @@ In the Ruby community it's very popular to **just append** to a file in `log/` d
 ## Why Should I Care?
 
 * You might want to have the log files in `/var/log` for simpler **log rotation**.
-* You might not want to use files for logging at all. Not on the app server anyway. Especially considering that for **security reasons** it's better to send logs to a different server.
+* You might **not want to use files** for logging at all. Not on the app server anyway. Especially considering that for **security reasons** it's better to send logs to a different server.
 * You might want to **aggregate logs** from multiple servers.
 * You might want to **filter logs** based on given pattern. Give me all error messages from all applications `logs.#.error`, all log items for database layer of testapp `logs.testapp.db.*`, all error messages for testapp `logs.testapp.*.error` etc.
-* Isn't ssh & tail -f really, really, I mean **really** lame? With AMQP, just [subscribe to any pattern](#inspecting-remote-server) on any server you want from comfort of your own dev machine. Rock'n'roll!
+* Isn't ssh & tail -f really, really, I mean **really** lame? With AMQP, just [subscribe to any pattern](#inspecting-remote-server) on any server you want from **comfort of your own dev machine**. Rock'n'roll!
 
 ## Readable Logs (If You Want)
 
