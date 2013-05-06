@@ -31,7 +31,7 @@ logger.warn("Now I'm a tad bored ...")
 logger.error("OK, gotta sleep now.")
 ```
 
-Note: Actually the screenshot shows how would you inspect messages published into RabbitMQ, whereas in the code I'm using the `IO::Raw` which only prints to console. [Example with AMQP](#logging-into-rabbitmq-local-or-remote) is longer.
+*Note: Actually the screenshot shows how would you inspect messages published into RabbitMQ, whereas in the code I'm using the `IO::Raw` which only prints to console. [Example with AMQP](#logging-into-rabbitmq-local-or-remote) is longer.*
 
 ## About [@botanicus](https://twitter.com/botanicus) ([blog](http://blog.101ideas.cz))
 
@@ -46,7 +46,7 @@ My only goal for this year is to **launch a successful start-up**. Could [Matche
 
 # Use-Cases
 
-## Logging Into RabbitMQ (Local or Remote)
+### Logging Into RabbitMQ (Local or Remote)
 
 *TODO: Disconnect the AMQP, stop EM & terminate.*
 
@@ -77,7 +77,7 @@ EM.run do
 end
 ```
 
-## Client/Server on Localhost using Named Pipe
+### Client/Server on Localhost using Named Pipe
 
 * You might not want to run EventMachine.
 * Setting up the Pipe logger on the client side requires much less setup, hence much less stuff can wrong.
@@ -98,9 +98,7 @@ logger = Logging::Logger.new do |logger|
 end
 ```
 
-## Inspecting Remote Server
-
-_Parsing of AMQP URL isn't implemented yet, but this is how it is going to work._
+# Inspecting Remote Server
 
 Often you want to figure out what's going on on your stagging server. This is how you do it:
 
