@@ -13,7 +13,7 @@ Launch:
 - Announce on my blog.
 
 Next Release:
-- YARD & Markdown (I'm using `code` and it doesn't work).
+- YARD & Markdown (I'm using `code` and it doesn't work) http://rubydoc.info/docs/yard/file/docs/GettingStarted.md#Configuring_YARD
 - Is @api plugin in formatters what we really want?
 - Finish specs & docs for io.
 - Gemspec: changelog.

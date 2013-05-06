@@ -25,7 +25,7 @@ describe Logging::Logger do
     end
   end
 
-  describe "instance methods" do
+  context "instance methods" do
     subject do
       described_class.new('logs.my_app.db')
     end
@@ -41,17 +41,6 @@ describe Logging::Logger do
 
       it "should be writable" do
         expect { subject.io = TestIO.new('label') }.not_to raise_error
-      end
-    end
-
-    describe "#write" do
-      before(:each) do
-        subject.io = TestIO.new('test')
-      end
-
-      it "should write to the io object" do
-        subject.io.write("Hello World!")
-        subject.io.messages.last.should eql("Hello World!")
       end
     end
 
@@ -83,6 +72,17 @@ describe Logging::Logger do
     describe "#log" do
       it "should take log level and a single message"
       it "should take log level and multiple messages"
+    end
+
+    describe "#write" do
+      before(:each) do
+        subject.io = TestIO.new('test')
+      end
+
+      it "should write to the io object" do
+        subject.io.write("Hello World!")
+        subject.io.messages.last.should eql("Hello World!")
+      end
     end
   end
 end
