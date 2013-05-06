@@ -9,7 +9,7 @@ I'm a **launch-addict**, creating stuff that matters is my biggest passion. I **
 
 I **contributed** to many famous OSS projects including **RubyGems**, **rSpec** and back in the g'd old days also to **Merb**. When EY decided to <abbr title="The so-called merge ... bunch of crap!">abandon Merb</abbr> I wrote my own web framework, [Rango](http://www.rubyinside.com/rango-ruby-web-app-framework-2858.html) (now <abbr title="Rango isn't maintained anymore. These days my apps are API servers with heavy JS frontend.">discontinued</abbr>), the only framework in Ruby with [template inheritance](https://github.com/botanicus/template-inheritance).
 
-My only goal for this year is to launch a successful start-up. Could [MatcherApp](http://www.matcherapp.com) be it?
+My only goal for this year is to **launch a successful start-up**. Could [MatcherApp](http://www.matcherapp.com) be it?
 
 ## Advantages
 
