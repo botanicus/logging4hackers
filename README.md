@@ -5,6 +5,9 @@ In the Ruby community it's very popular to just append to a file in `log/` direc
 ## `$ whoami`
 
 <img src="http://www.gravatar.com/avatar/74c419a50563fa9e5044820c2697ffd6" />
+
+I'm a launch-addict, creating stuff that matters is my biggest passion. I dropped out of high school and learnt programming before I'd end up on a street. In just a few months I moved from <span title="Small town in mountains of Czech Republic">middle of nowhere</span> to London.
+
 If you like my projects, you might want to follow [@botanicus](https://twitter.com/botanicus) on Twitter or read my [my blog](http://blog.101ideas.cz) ([RSS](http://blog.101ideas.cz/posts.rss)).
 
 ## Advantages
