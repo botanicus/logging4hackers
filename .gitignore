@@ -1,1 +1,10 @@
 /*.gem
+/doc
+/.yardoc
+
+# Unlike in apps, in libraries we shouldn't include
+# the lock file, because libraries are run against range
+# of versions of dependencies. We want things to break
+# if gem API was upgraded in an incompatible way, so we
+# can specify the version range which it works with.
+Gemfile.lock
