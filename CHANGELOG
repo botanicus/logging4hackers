@@ -1,0 +1,7 @@
+= 0.0.1
+
+  * Initial release.
+  * IO modules: Raw, Null, File, Buffer, Pipe and AMQP.
+  * Formatters: Default, JustMessage and Colourful.
+  * Data syntax highlighting by converting data into JSON using CodeRay.
+  * CLI utility for simple log inspection.

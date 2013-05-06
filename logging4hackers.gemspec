@@ -25,7 +25,13 @@ Gem::Specification.new do |s|
   s.executables = Dir['bin/*'].map(&File.method(:basename))
   s.require_paths = ['lib']
 
-  s.post_install_message = 'Bored. Wanna chat?'
+  begin
+    require 'changelog'
+  rescue LoadError
+    warn "~ Please install the changelog gem to correctly set the post install message!\n\n"
+  else
+    s.post_install_message = CHANGELOG.new.version_changes
+  end
 
   # RubyForge.
   s.rubyforge_project = 'logging4hackers'
