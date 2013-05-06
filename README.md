@@ -1,11 +1,6 @@
-# About [![Travis CI](https://travis-ci.org/botanicus/logging4hackers.png)](https://travis-ci.org/botanicus/logging4hackers)
+# About [![Travis CI](https://travis-ci.org/botanicus/logging4hackers.png)](https://travis-ci.org/botanicus/logging4hackers) [API](http://rubydoc.info/github/botanicus/logging4hackers/master)
 
 In the Ruby community it's very popular to **just append** to a file in `log/` directory in the current app. In many frameworks the developer **can't even change** the file. Damn it guys, **we can do better**!
-
-[API Documentation](http://rubydoc.info/github/botanicus/logging4hackers/master)
-https://travis-ci.org/botanicus/logging4hackers
-
-<img src="https://raw.github.com/botanicus/logging4hackers/master/logger.png" />
 
 ## About [@botanicus](https://twitter.com/botanicus) ([blog](http://blog.101ideas.cz))
 
