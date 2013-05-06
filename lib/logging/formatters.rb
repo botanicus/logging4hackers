@@ -49,7 +49,7 @@ module Logging
     end
 
     class Colourful < Default
-      LEVELS ||= {error: "\033[31m", warn: "\033[33m", info: "\033[36m", inspect: "\033[36m"}
+      LEVELS ||= {error: "\033[31m", warn: "\033[33m", info: "\033[36m"}
 
       # NOTE: Don't use ||=, otherwise it won't define it due its presence in superclass.
       FORMAT_STRINGS = {

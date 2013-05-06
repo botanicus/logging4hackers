@@ -8,7 +8,7 @@ module Logging
     # Inspect Ruby objects.
     def inspect(*objects)
       # Label.
-      label = (objects.first.is_a?(String) || objects.first.is_a?(Symbol)) ? objects.shift : nil
+      label = ((objects.first.is_a?(String) || objects.first.is_a?(Symbol)) && objects.length > 1) ? objects.shift : nil
 
       code = objects.map do |object|
         begin
@@ -28,3 +28,7 @@ module Logging
     end
   end
 end
+
+require_relative 'formatters'
+
+Logging::Formatters::Colourful::LEVELS[:inspect] = "\033[36m"
