@@ -6,18 +6,27 @@
 # stream.logs.*.error
 
 require_relative 'logging/io'
+require_relative 'logging/formatters'
 
 module Logging
   class Logger
     LEVELS ||= [:error, :warn, :info]
 
-    def initialize(&block)
+    attr_reader :label
+    def initialize(label = nil, &block)
+      @label = label
       block.call(self) if block
     end
 
     attr_writer :io
     def io
-      @io ||= IO::Raw.new(self.label)
+      @io ||= begin
+        if self.label
+          IO::Raw.new(self.label)
+        else
+          raise "You have to provide label in Logger.new if you want to use the default io object!"
+        end
+      end
     end
 
     def write(*args)
@@ -26,7 +35,7 @@ module Logging
 
     attr_writer :formatter
     def formatter
-      @formatter ||= IO::Raw.new(self.label)
+      @formatter ||= Formatters::Default.new
     end
 
     LEVELS.each do |level|
