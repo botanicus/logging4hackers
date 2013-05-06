@@ -9,7 +9,7 @@ I'm a **launch-addict**, creating stuff that matters is my biggest passion. I **
 
 I **contributed** to many famous OSS projects including **RubyGems**, **rSpec** and back in the g'd old days also to **Merb**. When EY decided to <a title="The so-called merge ... bunch of crap!">abandon Merb</a> I wrote my own web framework, [Rango](http://www.rubyinside.com/rango-ruby-web-app-framework-2858.html) (now <a title="These days my apps are API servers with heavy JS frontend.">discontinued</a>), the only framework in Ruby with [template inheritance](https://github.com/botanicus/template-inheritance).
 
-My other hobbies include travelling, learning languages (你好!) and personal development. My [3 + 2 rule](http://lifehacker.com/5853732/take-a-more-realistic-approach-to-your-to+do-list-with-the-3-%252B-2-rule) was featured on LifeHacker
+My other hobbies include **travelling**, learning **languages** (你好!) and **personal development**. My [3 + 2 rule](http://lifehacker.com/5853732/take-a-more-realistic-approach-to-your-to+do-list-with-the-3-%252B-2-rule) was featured on LifeHacker.
 
 My only goal for this year is to **launch a successful start-up**. Could [MatcherApp](http://www.matcherapp.com) be it?
 
