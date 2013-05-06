@@ -52,6 +52,8 @@ My only goal for this year is to **launch a successful start-up**. Could [Matche
 
 * You can connect to RabbitMQ on **localhost** or **remote server**.
 * So far it requires **some setup**. In the future I might **provide helpers** for this.
+* It's the **most powerful** setup. You can **filter patterns**, you can **discard messages** just by **not subscribing** to those you're not interested in, you can **consume** given message **multiple times**, so you can for instance **duplicate logs** on two servers etc.
+* Instead writing directly to AMQP you can **write to a named pipe** and have a **daemon** which **reroutes messages** to RabbitMQ as described [below](#clientserver-on-localhost-using-named-pipe).
 
 ```ruby
 require 'logging'
