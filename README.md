@@ -2,12 +2,12 @@
 
 In the Ruby community it's very popular to just append to a file in `log/` directory in the current app. In many frameworks the developer can't even change the file. Damn it guys, we can do better!
 
-## `$ whoami`
+## `$ whoami =>` [@botanicus](https://twitter.com/botanicus)
 
 ![botanicus](http://www.gravatar.com/avatar/74c419a50563fa9e5044820c2697ffd6)
 I'm a **launch-addict**, creating stuff that matters is my biggest passion. I **dropped out of high school** and learnt programming before I'd end up on a street. In just a few months I moved from <abbr title="Small town in mountains of Czech Republic">middle of nowhere</abbr> to **London** where I worked as a freelancer for do companies like **VMware** on the **RabbitMQ team** for which I <abbr title="Michael wasn't employed by VMware, he was hacking on AMQP in his free time. Kudos!">alongside</abbr> great hacker [michaelklishin](https://github.com/michaelklishin) rewrote the [AMQP gem](https://github.com/ruby-amqp/amqp).
 
-I **contributed to many famous OSS projects** including **RubyGems**, **rSpec** and back in the g'd old days also to **Merb**. When EY decided to <abbr title="The so-called merge ... bunch of crap!">abandon Merb</abbr> I wrote my own web framework, [Rango](http://www.rubyinside.com/rango-ruby-web-app-framework-2858.html) (now <abbr title="Rango isn't maintained anymore. These days my apps are API servers with heavy JS frontend.">discontinued</abbr>), the only framework in Ruby with [template inheritance](https://github.com/botanicus/template-inheritance).
+I **contributed** to many famous OSS projects including **RubyGems**, **rSpec** and back in the g'd old days also to **Merb**. When EY decided to <abbr title="The so-called merge ... bunch of crap!">abandon Merb</abbr> I wrote my own web framework, [Rango](http://www.rubyinside.com/rango-ruby-web-app-framework-2858.html) (now <abbr title="Rango isn't maintained anymore. These days my apps are API servers with heavy JS frontend.">discontinued</abbr>), the only framework in Ruby with [template inheritance](https://github.com/botanicus/template-inheritance).
 
 My only goal for this year is to launch a successful start-up. Could [MatcherApp](http://www.matcherapp.com) be it?
 
