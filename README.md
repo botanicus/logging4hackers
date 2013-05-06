@@ -2,6 +2,11 @@
 
 In the Ruby community it's very popular to just append to a file in `log/` directory in the current app. In many frameworks the developer can't even change the file. Damn it guys, we can do better!
 
+## `$ whoami`
+
+<img src="http://www.gravatar.com/avatar/74c419a50563fa9e5044820c2697ffd6" />
+If you like my projects, you might want to follow [@botanicus](https://twitter.com/botanicus) on Twitter or read my [my blog](http://blog.101ideas.cz) ([RSS](http://blog.101ideas.cz/posts.rss)).
+
 ## Advantages
 
 * You might want to have the log files in `/var/log` for simpler **log rotation**.
@@ -110,3 +115,7 @@ end
 
 # Etc.
 ```
+
+# Contributing
+
+Feature branches, follow code conventions, docs & specs.
