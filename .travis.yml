@@ -1,0 +1,20 @@
+# === Documentation ===
+# http://about.travis-ci.org/docs/user/languages/ruby
+# http://about.travis-ci.org/docs/user/build-configuration
+# https://github.com/ruby-amqp/amqp/blob/master/.travis.yml
+
+language: ruby
+
+bundler_args: --without documentation
+
+script: bundle exec rspec
+
+rvm:
+  - 1.9.3
+  - 2.0.0
+  - rbx-19mode
+  - jruby-19mode
+
+notifications:
+  recipients:
+    - james@101ideas.cz
