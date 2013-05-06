@@ -1,4 +1,4 @@
-# About [![Travis CI](https://travis-ci.org/botaicus/logging4hackers.png)](https://travis-ci.org/botanicus/logging4hackers)
+# About [![Travis CI](https://travis-ci.org/botanicus/logging4hackers.png)](https://travis-ci.org/botanicus/logging4hackers)
 
 In the Ruby community it's very popular to **just append** to a file in `log/` directory in the current app. In many frameworks the developer **can't even change** the file. Damn it guys, **we can do better**!
 
