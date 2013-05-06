@@ -12,3 +12,7 @@ group(:documentation) do
   gem 'yard'
   gem 'redcarpet'
 end
+
+group(:release) do
+  gem 'changelog'
+end
