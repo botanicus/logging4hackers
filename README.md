@@ -10,6 +10,12 @@ In the Ruby community it's very popular to **just append** to a file in `log/` d
 * You might want to **filter logs** based on given pattern. Give me all error messages from all applications `logs.#.error`, all log items for database layer of testapp `logs.testapp.db.*`, all error messages for testapp `logs.testapp.*.error` etc.
 * Isn't ssh & tail -f really, really, I mean **really** lame? With AMQP, just subscribe to any pattern on any server you want from comfort of your own dev machine. Rock'n'roll!
 
+## Readable Logs
+
+Besides, logs should be easy to read for the developers. No unnecessary crap, red for errors, yellow for warnings, cyan for info. Show time and identifier (for instance `testapp.logs.db`) and the message. Easy peasy!
+
+<img src="https://raw.github.com/botanicus/logging4hackers/master/logger.png" />
+
 ## About [@botanicus](https://twitter.com/botanicus) ([blog](http://blog.101ideas.cz))
 
 ![botanicus](http://www.gravatar.com/avatar/74c419a50563fa9e5044820c2697ffd6)
@@ -20,12 +26,6 @@ I **contributed** to many famous OSS projects including **RubyGems**, **rSpec** 
 My other hobbies include **travelling**, learning **languages** (你好!) and **personal development**. My [3 + 2 rule](http://lifehacker.com/5853732/take-a-more-realistic-approach-to-your-to+do-list-with-the-3-%252B-2-rule) was featured on LifeHacker.
 
 My only goal for this year is to **launch a successful start-up**. Could [MatcherApp](http://www.matcherapp.com) be it?
-
-## Readable Logs
-
-Besides, logs should be easy to read for the developers. No unnecessary crap, red for errors, yellow for warnings, cyan for info. Show time and identifier (for instance `testapp.logs.db`) and the message. Easy peasy!
-
-<img src="https://raw.github.com/botanicus/logging4hackers/master/logger.png" />
 
 # Use-Cases
 
