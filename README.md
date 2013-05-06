@@ -5,10 +5,9 @@ In the Ruby community it's very popular to just append to a file in `log/` direc
 ## `$ whoami`
 
 <img src="http://www.gravatar.com/avatar/74c419a50563fa9e5044820c2697ffd6" />
+I'm a **launch-addict**, creating stuff that matters is my biggest passion. I dropped out of high school and learnt programming before I'd end up on a street. In just a few months I moved from <span title="Small town in mountains of Czech Republic">middle of nowhere</span> to London where I worked as a freelancer for do companies like VMware for which I alongside [michaelklishin](https://github.com/michaelklishin) rewrote the [AMQP gem](https://github.com/ruby-amqp/amqp).
 
-I'm a launch-addict, creating stuff that matters is my biggest passion. I dropped out of high school and learnt programming before I'd end up on a street. In just a few months I moved from <span title="Small town in mountains of Czech Republic">middle of nowhere</span> to London.
-
-If you like my projects, you might want to follow [@botanicus](https://twitter.com/botanicus) on Twitter or read my [my blog](http://blog.101ideas.cz) ([RSS](http://blog.101ideas.cz/posts.rss)).
+After few years working for various clients, I'm trying to start some projects of my own. Follow my progress on [Twitter](https://twitter.com/botanicus) and make sure to read my [my blog](http://blog.101ideas.cz) (grab the [RSS](http://blog.101ideas.cz/posts.rss)).
 
 ## Advantages
 
