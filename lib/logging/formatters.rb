@@ -164,5 +164,22 @@ module Logging
         end
       end
     end
+
+    # {"key": "logs.stream.app.info", "message": "String\ndata"}
+    class Serialised
+      def initialize(formatter)
+        @formatter = formatter
+      end
+
+      def format_single_message(level, label, message)
+        formatted_message = @formatter.format_single_message(level, label, message)
+        {key: "#{label}.#{level}", message: formatted_message}.to_json
+      end
+
+      def format_multiple_messages(level, label, messages)
+        formatted_message = @formatter.format_multiple_messages(level, label, messages)
+        {key: "#{label}.#{level}", message: formatted_message}.to_json
+      end
+    end
   end
 end

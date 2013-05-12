@@ -93,13 +93,16 @@ end
 mkfifo /tmp/loggingd.pipe
 
 # Listen for messages coming to /tmp/loggingd.pipe.
-tail -f /tmp/loggingd.pipe
+#tail -f /tmp/loggingd.pipe
+
+# Listen for new messages on the pipe and forward them to RabbitMQ.
+./bin/loggingd.rb
 ```
 
 ```ruby
 logger = Logging::Logger.new do |logger|
   logger.io = Logging::IO::Pipe.new('testapp.logs.db', '/tmp/loggingd.pipe')
-  logger.formatter = Logging::Formatters::Colourful.new
+  logger.formatter = Logging::Formatters::Serialised.new(Logging::Formatters::Colourful.new)
 end
 ```
 
