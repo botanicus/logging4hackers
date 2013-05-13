@@ -6,6 +6,12 @@ $LOAD_PATH.unshift(File.expand_path('../../lib', __FILE__))
 require 'eventmachine'
 require 'logging/logger'
 
+begin
+  require 'em/filetail'
+rescue LoadError
+  abort 'Make sure you have eventmachine-tail installed!'
+end
+
 # Usage:
 #   ./bin/logs_proxy.rb [pipe path] *[key:path]
 #
@@ -29,12 +35,8 @@ ITEMS = ARGV.reduce(Hash.new) do |buffer, item|
   end
 end
 
-class LogReader < EventMachine::FileWatch
-  def initialize(logger)
-    @logger = logger
-  end
-
-  def notify_readable
+class LogReader < EventMachine::FileTail
+  def receive_data(data)
     @io.readlines.each do |line|
       @logger.info(line.chomp)
     end
@@ -42,6 +44,8 @@ class LogReader < EventMachine::FileWatch
 end
 
 EM.run do
+  puts "~ Logging into #{PIPE_PATH} ..."
+
   ITEMS.each do |routing_key, paths|
     logger = begin
       Logging::Logger.new do |logger|
@@ -53,13 +57,7 @@ EM.run do
     paths.each do |path|
       puts "~ #{routing_key}: #{path}"
 
-      # Log file.
-      fd = IO.sysopen(path, Fcntl::O_RDONLY|Fcntl::O_NONBLOCK)
-      file = IO.new(fd, Fcntl::O_RDONLY|Fcntl::O_NONBLOCK)
-
-      # Watch the file.
-      fdmon = EM.watch(file, LogReader, logger)
-      fdmon.notify_readable = true
+      EM.file_tail(file, LogReader, logger)
     end
   end
 end

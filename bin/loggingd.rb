@@ -18,7 +18,7 @@ class LogReader < EventMachine::FileWatch
 
   def notify_readable
     @io.readlines.each do |line|
-      self.forward(line)
+      self.forward(line.chomp)
     end
   end
 
@@ -31,7 +31,7 @@ class LogReader < EventMachine::FileWatch
   end
 
   def parse(line)
-    JSON.parse(line.chomp)
+    JSON.parse(line)
   end
 end
 
