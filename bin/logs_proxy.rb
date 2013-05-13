@@ -4,7 +4,7 @@
 $LOAD_PATH.unshift(File.expand_path('../../lib', __FILE__))
 
 require 'eventmachine'
-require 'logging'
+require 'logging/logger'
 
 # Usage:
 #   ./bin/logs_proxy.rb [pipe path] *[key:path]
