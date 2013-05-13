@@ -49,7 +49,7 @@ EM.run do
     paths.each do |path|
       puts "~ #{routing_key}: #{path}"
 
-      EM.file_tail(path, LogReader) do |tail, line|
+      EM.file_tail(path) do |tail, line|
         logger.info(line.chomp)
       end
     end
