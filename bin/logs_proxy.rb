@@ -57,7 +57,7 @@ EM.run do
     paths.each do |path|
       puts "~ #{routing_key}: #{path}"
 
-      EM.file_tail(file, LogReader, logger)
+      EM.file_tail(path, LogReader, logger)
     end
   end
 end
