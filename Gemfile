@@ -4,6 +4,11 @@ source 'https://rubygems.org'
 
 gem 'coderay'
 
+group(:amqp) do
+  gem 'eventmachine'
+  gem 'amq-client'
+end
+
 group(:test) do
   gem 'rspec'
 end
