@@ -36,7 +36,7 @@ class LogReader < EventMachine::FileWatch
 
   def notify_readable
     @io.readlines.each do |line|
-      @logger.info(line)
+      @logger.info(line.chomp)
     end
   end
 end

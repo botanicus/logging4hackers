@@ -56,6 +56,7 @@ EM.run do
       queue.on_delivery do |basic_deliver, header, payload|
         if log_directory
           # basic_deliver.routing_key
+          raise 'not implemented yet'
         else
           puts payload
         end
