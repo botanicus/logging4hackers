@@ -35,14 +35,6 @@ ITEMS = ARGV.reduce(Hash.new) do |buffer, item|
   end
 end
 
-class LogReader < EventMachine::FileTail
-  def receive_data(data)
-    @io.readlines.each do |line|
-      @logger.info(line.chomp)
-    end
-  end
-end
-
 EM.run do
   puts "~ Logging into #{PIPE_PATH} ..."
 
@@ -57,7 +49,9 @@ EM.run do
     paths.each do |path|
       puts "~ #{routing_key}: #{path}"
 
-      EM.file_tail(path, LogReader, logger)
+      EM.file_tail(path, LogReader) do |tail, line|
+        logger.info(line.chomp)
+      end
     end
   end
 end
