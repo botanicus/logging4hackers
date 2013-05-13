@@ -35,6 +35,12 @@ ITEMS = ARGV.reduce(Hash.new) do |buffer, item|
   end
 end
 
+module Handler
+  def file_modified
+    puts "#{path} modified"
+  end
+end
+
 EM.run do
   puts "~ Logging into #{PIPE_PATH} ..."
 
@@ -50,7 +56,11 @@ EM.run do
       puts "~ #{routing_key}: #{path}"
 
       EM.file_tail(path) do |tail, line|
-        logger.info(line.chomp)
+        # When loggingd.rb doesn't run, it all works
+        # (checked through tail -f /var/run/loggingd.pipe)
+        # However when loggingd.rb runs, the results don't
+        # get flushed until logs_proxy.rb terminates.
+        logger.info(line)
       end
     end
   end

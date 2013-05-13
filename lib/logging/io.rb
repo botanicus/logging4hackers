@@ -90,7 +90,7 @@ module Logging
       end
 
       def write(message)
-        self.pipe.puts(message)
+        self.pipe.puts("#{message}\n")
         self.pipe.flush
       end
     end
