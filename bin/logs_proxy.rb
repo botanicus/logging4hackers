@@ -52,6 +52,7 @@ EM.run do
 
     paths.each do |path|
       puts "~ #{routing_key}: #{path}"
+
       # Log file.
       fd = IO.sysopen(path, Fcntl::O_RDONLY|Fcntl::O_NONBLOCK)
       file = IO.new(fd, Fcntl::O_RDONLY|Fcntl::O_NONBLOCK)

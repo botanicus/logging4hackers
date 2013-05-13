@@ -168,6 +168,8 @@ module Logging
     # {"key": "logs.stream.app.info", "message": "String\ndata"}
     class Serialised
       def initialize(formatter)
+        require 'json'
+
         @formatter = formatter
       end
 
