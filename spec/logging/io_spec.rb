@@ -14,6 +14,18 @@ describe Logging::IO::Raw do
   # TODO: Capture STDOUT and test.
 end
 
+describe Logging::IO::StdErr do
+  it "should output to stderr" do
+    string = 'hello world'
+
+    result = capture(:stderr) do
+      Logging::IO::StdErr.new('label').write(string)
+    end
+
+    expect(result.chomp).to eq(string)
+  end
+end
+
 describe Logging::IO::Null do
   subject { described_class.new('logs.app.tests') }
 
