@@ -35,12 +35,6 @@ ITEMS = ARGV.reduce(Hash.new) do |buffer, item|
   end
 end
 
-module Handler
-  def file_modified
-    puts "#{path} modified"
-  end
-end
-
 EM.run do
   puts "~ Logging into #{PIPE_PATH} ..."
 
@@ -52,15 +46,25 @@ EM.run do
       end
     end
 
+    # ???
+    # logger.io.pipe.flock(File::LOCK_UN)
+
     paths.each do |path|
       puts "~ #{routing_key}: #{path}"
 
       EM.file_tail(path) do |tail, line|
-        # When loggingd.rb doesn't run, it all works
+        # When loggingd.rb doesn't run, it works
         # (checked through tail -f /var/run/loggingd.pipe)
         # However when loggingd.rb runs, the results don't
         # get flushed until logs_proxy.rb terminates.
-        logger.info(line)
+        #
+        # It might be just inotify not sending the notification?
+        #
+        # Currently loggingd.rb seems to be broken :/
+        #
+        # logger.info(line)
+        logger.io.pipe.puts(logger.formatter.format_single_message('info', routing_key, line))
+        logger.io.pipe.flush
       end
     end
   end
