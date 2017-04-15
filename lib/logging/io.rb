@@ -37,6 +37,13 @@ module Logging
         self.write(formatter.format_multiple_messages(level, self.label, messages))
       end
     end
+    
+    # Write on console (stderr)
+    class StdErr < Base
+      def write(message)
+        $stderr.puts message
+      end
+    end
 
     # Discard everything.
     class Null < Raw
