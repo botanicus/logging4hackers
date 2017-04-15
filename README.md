@@ -137,7 +137,7 @@ end
 class App
   def self.logger
   @logger ||= Logging::Logger.new do |logger|
-    logger.io = Logging::IO::Pipe.new('testapp.app.db', '/tmp/loggingd.pipe')
+    logger.io = Logging::IO::Pipe.new('testapp.logs.app', '/tmp/loggingd.pipe')
     logger.formatter = Logging::Formatters::Colourful.new
   end
 end
